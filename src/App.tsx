@@ -13,6 +13,7 @@ import {
 } from "@mantine/core";
 import {
   IconBrandGithub,
+  IconBrandLinkedin,
   IconBrandTelegram,
   IconBrandTwitter,
   IconBrandYoutube,
@@ -114,6 +115,16 @@ function App() {
         <Container>
           {/* <MantineLogo size={28} /> */}
           <Group gap={0} justify="flex-end" wrap="nowrap">
+            <ActionIcon
+              component="a"
+              href="https://www.linkedin.com/in/mokevnin/"
+              target="_blank"
+              size="lg"
+              color="gray"
+              variant="subtle"
+            >
+              <IconBrandLinkedin size={18} stroke={1.5} />
+            </ActionIcon>
             <ActionIcon
               component="a"
               href="https://twitter.com/mokevnin"
