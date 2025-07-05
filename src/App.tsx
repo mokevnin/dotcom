@@ -1,40 +1,87 @@
-import { Container, MantineProvider, Text, Title } from "@mantine/core";
+import {
+    ActionIcon,
+  Avatar,
+  Box,
+  Button,
+  Container,
+  Group,
+  Stack,
+  Text,
+  Title,
+} from "@mantine/core";
+import {
+    IconBrandGithub,
+  IconBrandInstagram,
+  IconBrandTwitter,
+  IconBrandYoutube,
+} from "@tabler/icons-react";
+
+import MeImage from "./assets/me.png";
 
 function App() {
   return (
-    <MantineProvider>
-      <header>
-        <Container>
-          <Title order={1}>Заголовок страницы</Title>
-          <Text size="lg">Описание страницы, которое позже заменишь</Text>
-        </Container>
-      </header>
+    <>
+      <Container size="md" py={100}>
+        <Stack my="xl">
+          <Avatar src={MeImage} size="lg" />
+          <Title order={1} fz={50}>
+            Hi, I'm Kirill —{" "}
+            <Text
+              component="span"
+              variant="gradient"
+              gradient={{ from: "blue", to: "cyan" }}
+              inherit
+            >
+              Web Developer
+            </Text>{" "}
+            for EdTech
+          </Title>
 
-      <main>
-        <Container>
-          <section>
-            <Title order={2}>Раздел 1</Title>
-            <Text>
-              Здесь будет основной текст первого раздела. Используй заполнители,
-              которые заменишь в будущем.
-            </Text>
-          </section>
+          <Text fz="h2" c="dimmed">
+            I build custom web applications for education technology projects
+            worldwide
+          </Text>
+        </Stack>
 
-          <section>
-            <Title order={2}>Раздел 2</Title>
-            <Text>
-              Здесь разместишь описание второго раздела. Текст для замены.
-            </Text>
-          </section>
-        </Container>
-      </main>
+        <Group>
+          <Button
+            size="xl"
+            variant="gradient"
+            gradient={{ from: "blue", to: "cyan" }}
+          >
+            Projects
+          </Button>
 
-      <footer>
+          <Button
+            component="a"
+            href="https://github.com/mokevnin"
+            target="_blank"
+            size="xl"
+            variant="default"
+            leftSection={<IconBrandGithub size={20} />}
+          >
+            GitHub
+          </Button>
+        </Group>
+      </Container>
+
+      <Box>
         <Container>
-          <Text size="sm">© 2025 Placeholder company. Все права защищены.</Text>
+          {/* <MantineLogo size={28} /> */}
+          <Group gap={0} justify="flex-end" wrap="nowrap">
+            <ActionIcon size="lg" color="gray" variant="subtle">
+              <IconBrandTwitter size={18} stroke={1.5} />
+            </ActionIcon>
+            <ActionIcon size="lg" color="gray" variant="subtle">
+              <IconBrandYoutube size={18} stroke={1.5} />
+            </ActionIcon>
+            <ActionIcon size="lg" color="gray" variant="subtle">
+              <IconBrandInstagram size={18} stroke={1.5} />
+            </ActionIcon>
+          </Group>
         </Container>
-      </footer>
-    </MantineProvider>
+      </Box>
+    </>
   );
 }
 
