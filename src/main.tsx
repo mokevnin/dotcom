@@ -1,12 +1,19 @@
-import { createRoot } from "react-dom/client";
-import "./stylesheets/application.scss";
+import "@mantine/core/styles.css";
+import "@mantine/carousel/styles.css";
 import { MantineProvider } from "@mantine/core";
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
 
-const vdom = (
-  <MantineProvider>
-    <App />
-  </MantineProvider>
-);
+const root = document.getElementById("root");
+if (!root) {
+  throw new Error("Root element #root not found");
+}
 
-createRoot(document.getElementById("root")!).render(vdom);
+createRoot(root).render(
+  <StrictMode>
+    <MantineProvider defaultColorScheme="auto">
+      <App />
+    </MantineProvider>
+  </StrictMode>,
+);

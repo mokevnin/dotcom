@@ -3,7 +3,42 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kirill Mokevnin | Web Development</title>
+    <title>Kirill Mokevnin — Web Developer for EdTech</title>
+    <meta
+      name="description"
+      content="Kirill Mokevnin — web developer for EdTech. I build custom web applications for education technology projects worldwide."
+    />
+    <link rel="canonical" href="https://mokevnin.com/" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#242424" media="(prefers-color-scheme: dark)" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://mokevnin.com/" />
+    <meta property="og:title" content="Kirill Mokevnin — Web Developer for EdTech" />
+    <meta
+      property="og:description"
+      content="I build custom web applications for education technology projects worldwide."
+    />
+    <meta property="og:image" content="https://mokevnin.com/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@mokevnin" />
+
+    <script>
+      // Apply saved/system color scheme before render to avoid a flash (Mantine ColorSchemeScript equivalent)
+      (() => {
+        try {
+          const saved = localStorage.getItem("mantine-color-scheme-value");
+          const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+          const scheme =
+            saved === "light" || saved === "dark" ? saved : prefersDark ? "dark" : "light";
+          document.documentElement.setAttribute("data-mantine-color-scheme", scheme);
+        } catch {}
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
