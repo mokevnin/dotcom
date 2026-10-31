@@ -1,0 +1,10 @@
+[
+  { "name": "JS", "path": "dist/assets/*.js", "limit": "95 kB" },
+  { "name": "CSS", "path": "dist/assets/*.css", "limit": "33 kB" },
+  {
+    "name": "Images",
+    "path": ["dist/assets/*.webp", "dist/*.png", "dist/*.jpg"],
+    "brotli": false,
+    "limit": "500 kB"
+  }
+]

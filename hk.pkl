@@ -1,0 +1,56 @@
+amends "package://github.com/jdx/hk/releases/download/v2.10.0/hk@2.10.0#/Config.pkl"
+import "package://github.com/jdx/hk/releases/download/v2.10.0/hk@2.10.0#/Builtins.pkl"
+
+// Commit hook: fast checks on staged files. Pre-push, `mise run check` and CI run everything.
+local fast = new Mapping<String, Step> {
+    ["oxfmt"] = Builtins.oxfmt
+    ["oxlint"] = Builtins.ox_lint
+    ["typos"] = Builtins.typos
+    ["betterleaks"] = Builtins.betterleaks
+    ["rumdl"] = Builtins.rumdl
+    ["jactionlint"] = Builtins.jactionlint
+    ["agnix"] {
+        glob = List("AGENTS.md", "CLAUDE.md", ".claude/**", ".agnix.toml")
+        check = "agnix --strict ."
+    }
+}
+
+local all = (fast) {
+    // The root tsconfig only holds project references, so `tsc -b` is the check, not `tsc -p`.
+    ["tsc"] {
+        glob = List("**/*.ts", "**/*.tsx", "tsconfig*.json")
+        check = "tsc -b"
+    }
+    ["knip"] = Builtins.knip
+    ["build"] {
+        depends = List("tsc")
+        glob = List("src/**", "public/**", "index.html", "package.json", "pnpm-lock.yaml", "vite.config.ts", "postcss.config.ts", ".size-limit.json")
+        check = "vite build --logLevel warn && size-limit"
+    }
+    ["osv-scanner"] = Builtins.osv_scanner
+    ["betterleaks-history"] {
+        check = "betterleaks git --redact --no-banner ."
+    }
+    ["lychee"] {
+        glob = List("**/*.md", "index.html", "src/**/*.tsx")
+        check = "lychee --config lychee.toml --no-progress {{ files }}"
+    }
+}
+
+hooks {
+    ["pre-commit"] {
+        fix = true
+        stash = "git"
+        steps = fast
+    }
+    ["pre-push"] {
+        steps = all
+    }
+    ["check"] {
+        steps = all
+    }
+    ["fix"] {
+        fix = true
+        steps = all
+    }
+}

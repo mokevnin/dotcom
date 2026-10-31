@@ -1,0 +1,5 @@
+{
+  "$schema": "https://unpkg.com/knip@6/schema-jsonc.json",
+  // These binaries are run by hk steps in hk.pkl, which knip does not read.
+  "ignoreDependencies": ["oxfmt", "oxlint", "oxlint-tsgolint"],
+}

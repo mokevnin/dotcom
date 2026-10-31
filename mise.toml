@@ -1,0 +1,43 @@
+# One toolchain for developers, git hooks and CI: `mise run setup`, then `mise run check`.
+[tools]
+node = "26.13.0"
+pnpm = "12.16.1"
+hk = "2.10.0"
+pkl = "0.32.2"
+betterleaks = "1.9.0"
+osv-scanner = "2.7.0"
+jactionlint = "2.4.0"
+typos = "1.51.1"
+rumdl = "0.3.2"
+lychee = "0.24.2"
+# The release also ships agnix-lsp and agnix-mcp archives; take only the CLI.
+"github:agent-sh/agnix" = { version = "0.60.2", matching_regex = "^agnix-(x86_64|aarch64)-" }
+
+[env]
+# oxlint, oxfmt, knip, tsc, vite and size-limit are pinned in package.json; hk steps call them by name.
+_.path = ["{{config_root}}/node_modules/.bin"]
+
+[tasks.setup]
+description = "Install dependencies and the git hooks"
+run = ["pnpm install --frozen-lockfile", "hk install"]
+
+[tasks.dev]
+description = "Start the dev server"
+run = "vite"
+
+[tasks.build]
+description = "Type-check and build for production into dist/"
+run = ["tsc -b", "vite build"]
+
+[tasks.preview]
+description = "Serve the production build"
+depends = ["build"]
+run = "vite preview"
+
+[tasks.check]
+description = "Run every check, the same set CI runs (builds dist/)"
+run = "hk check --all"
+
+[tasks.fix]
+description = "Apply the automatic fixes"
+run = "hk fix --all"

@@ -1,0 +1,13 @@
+# GITHUB_TOKEN is read from the environment, which avoids github.com rate limits.
+max_concurrency = 8
+max_retries = 3
+retry_wait_time = 5
+timeout = 30
+cache = true
+max_cache_age = "1d"
+accept = ["200..=204", "429"]
+exclude_path = ["node_modules", "dist"]
+# Root-relative links in index.html (/favicon.png) are served from public/.
+root_dir = "public"
+# LinkedIn answers bots with status 999; the link works in a browser.
+exclude = ["^https://www\\.linkedin\\.com/"]
