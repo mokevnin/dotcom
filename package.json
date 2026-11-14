@@ -4,9 +4,9 @@
   "private": true,
   "type": "module",
   "dependencies": {
-    "@mantine/carousel": "^9.7.4",
-    "@mantine/core": "^9.7.4",
-    "@mantine/hooks": "^9.7.4",
+    "@mantine/carousel": "^9.7.5",
+    "@mantine/core": "^9.7.5",
+    "@mantine/hooks": "^9.7.5",
     "@tabler/icons-react": "^3.50.0",
     "embla-carousel": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
@@ -17,16 +17,16 @@
     "@size-limit/file": "14.3.0",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
-    "@vitejs/plugin-react": "^6.1.2",
+    "@vitejs/plugin-react": "^6.2.1",
     "jiti": "^2.7.0",
-    "knip": "6.44.0",
-    "oxfmt": "0.75.0",
-    "oxlint": "1.90.0",
-    "oxlint-tsgolint": "7.0.2005",
+    "knip": "6.44.2",
+    "oxfmt": "0.77.0",
+    "oxlint": "1.92.0",
+    "oxlint-tsgolint": "7.0.2006",
     "postcss": "^8.5.32",
     "postcss-preset-mantine": "^1.18.0",
     "size-limit": "14.3.0",
     "typescript": "~7.0.2",
-    "vite": "^8.3.5"
+    "vite": "^8.3.6"
   }
 }
